@@ -1,0 +1,19 @@
+/* header */
+.container-fluid {
+    padding: 0;
+}
+
+.nav-item a {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+/* /profile/{profile} */
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+
+.list-group {
+    margin-left: 20px;
+}

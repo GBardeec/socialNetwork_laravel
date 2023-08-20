@@ -13,8 +13,8 @@ class LoginController extends Controller
     public function __invoke(Request $request)
     {
         if ($request->isMethod('post')) {
-            $login = htmlspecialchars($request->input('login'));
-            $password = htmlspecialchars($request->input('password'));
+            $login = $request->input('login');
+            $password = $request->input('password');
 
             $user = User::where('login', $login)->first();
 

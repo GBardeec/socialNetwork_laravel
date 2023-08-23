@@ -7,7 +7,7 @@
     </h3>
 
     <div class="">
-        <table class="table w-25">
+        <table class="table w-50">
             <thead>
             <tr>
                 <th scope="col">id</th>

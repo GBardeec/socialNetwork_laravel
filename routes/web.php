@@ -25,8 +25,8 @@ Route::group(['namespace' => 'App\Http\Controllers\UserComments'], function () {
 });
 
 Route::group(['namespace' => 'App\Http\Controllers\Auth'], function () {
-    Route::get('/login', 'LoginController')->name('auth.login');
-    Route::post('/login', 'LoginController');
+    Route::get('/login', 'IndexController')->name('auth.index');
+    Route::post('/login', 'AuthController')->name('auth.login');
     Route::get('/logout', 'LogoutController')->name('auth.logout');
 });
 

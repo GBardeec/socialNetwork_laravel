@@ -60,7 +60,7 @@
                             </a>
                         @endauth
                         @guest()
-                            <a type="button" class="btn btn-secondary" href="{{route('auth.login')}}">
+                            <a type="button" class="btn btn-secondary" href="{{route('auth.index')}}">
                                 Авторизация
                             </a>
                         @endguest

@@ -19,7 +19,6 @@ class ShowController extends Controller
         $profileComments = $profileToShow->comments;
         $profileCommentsCount = count($profileComments);
 
-
         return view('profile.index', compact('profile', 'profileToShow', 'profileComments', 'profileCommentsCount'));
 
     }

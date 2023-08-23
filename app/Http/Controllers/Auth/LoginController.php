@@ -12,7 +12,7 @@ class LoginController extends Controller
 {
     public function __invoke(Request $request)
     {
-        if ($request->isMethod('post')) {
+        if ($request->isMethod('post') == 'POST' && isset($_POST['login']) && isset($_POST['password'])) {
             $login = $request->input('login');
             $password = $request->input('password');
 
@@ -26,6 +26,8 @@ class LoginController extends Controller
                 if ($this->verifyPassword($password, $user->password)) {
                     Auth::login($user);
                     return view('socialNetwork.index');
+                } else {
+                    abort(403, 'Вы ввели неправельный пароль.');
                 }
             }
         }

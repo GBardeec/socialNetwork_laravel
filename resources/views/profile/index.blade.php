@@ -10,6 +10,27 @@
             <ul class="list-group w-25">
                 <li class="list-group-item">id пользователя: {{ $profile->user->id }}</li>
                 <li class="list-group-item">Логин пользователя: {{ $profile->user->login }}</li>
+                @if (Auth::check())
+                <li class="list-group-item">
+                    <a class="btn btn-secondary" href="{{ route('library.index', ['profileId' => $profile->id]) }}">Библиотека пользователя</a>
+                </li>
+                    @if ($profile->user->id !== Auth::id())
+                        <li class="list-group-item">
+                            @if(Auth::user()->hasLibraryAccess($profile->id))
+                                <form action="{{ route('library.revoke-access.index', ['profileId' => $profile->id]) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Отключить доступ к библиотеке</button>
+                                </form>
+                            @else
+                                <form action="{{ route('library.give-access.index', ['profileId' => $profile->id]) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success">Дать доступ к библиотеке</button>
+                                </form>
+                            @endif
+                        </li>
+                    @endif
+                @endif
+
             </ul>
         </div>
         <hr>
@@ -54,7 +75,7 @@
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
                 <div class="col-auto">
-                    <button type="submit" class="btn btn-primary mb-3">Отправить</button>
+                    <button type="submit" class="btn btn-secondary mb-3">Отправить</button>
                 </div>
             </form>
         @endauth
@@ -152,7 +173,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Ответ на комментарий
-                                            пользователю: ${commenterLogin}</h5>
+                                            пользователя: ${commenterLogin}</h5>
 
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Закрыть"></button>

@@ -5,15 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProfileComment extends Model
+class Book extends Model
 {
     use HasFactory;
     protected $guarded = false;
 
-    protected $table = 'profile_comment';
-
-    public function comment()
+    public function libraries()
     {
-        return $this->belongsTo(Comment::class, 'comment_id', 'id');
+        return $this->hasMany(Library::class, 'book_id', 'id');
     }
 }

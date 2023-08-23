@@ -17,36 +17,50 @@
         <nav class="navbar navbar-expand-lg navbar-light mb-3">
             <div class="container-fluid">
                 <i class="navbar-brand fs-4 mr-3">Social network</i>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Переключатель навигации">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Переключатель навигации">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                         <li class="nav-item ">
-                            <a class="nav-link active " aria-current="page" href="{{route('main.index')}}">Главная</a>
+                            <a class="nav-link active " aria-current="page" href="{{route('main.index')}}">
+                                Главная
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{route('profile.index')}}">Список пользователей</a>
+                            <a class="nav-link active" aria-current="page" href="{{route('profile.index')}}">
+                                Список пользователей
+                            </a>
                         </li>
                         @auth()
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ route('profile.show', auth()->user()->profile->id) }}">Личный кабинет</a>
+                                <a class="nav-link active" aria-current="page"
+                                   href="{{ route('profile.show', auth()->user()->profile->id) }}">
+                                    Личный кабинет
+                                </a>
                             </li>
-                        @endauth
-                        @auth()
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ route('comments.show') }}">Комментарии пользователя</a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('comments.show') }}">
+                                    Комментарии пользователя
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ route('book.index') }}">
+                                    Работа с книгами
+                                </a>
                             </li>
                         @endauth
                     </ul>
                     <div class="d-flex">
                         @auth()
-                            <a type="button" class="btn btn-secondary" href="{{route('auth.logout')}}" >
+                            <a type="button" class="btn btn-secondary" href="{{route('auth.logout')}}">
                                 Выйти
                             </a>
                         @endauth
                         @guest()
-                            <a type="button" class="btn btn-secondary" href="{{route('auth.login')}}" >
+                            <a type="button" class="btn btn-secondary" href="{{route('auth.login')}}">
                                 Авторизация
                             </a>
                         @endguest

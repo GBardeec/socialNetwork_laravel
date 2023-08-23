@@ -11,14 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('libraries', function (Blueprint $table) {
             $table->id();
+
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('book_id');
+
             $table->timestamps();
 
-            $table->index('user_id', 'user_profiles_idx');
+            $table->index('user_id', 'libraries_user_id_idx');
+            $table->index('book_id', 'libraries_book_id_idx');
 
-            $table->foreign('user_id', 'user_profiles_fk')->on('profiles')->references('id');
+            $table->foreign('user_id', 'libraries_user_id_fk')->on('users')->references('id');
+            $table->foreign('book_id', 'libraries_book_id_fk')->on('books')->references('id');
         });
     }
 
@@ -27,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('libraries');
     }
 };

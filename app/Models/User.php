@@ -50,4 +50,24 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class, 'user_id', 'id');
     }
+
+    public function libraries()
+    {
+        return $this->hasMany(Library::class, 'user_id', 'id');
+    }
+
+    public function accesses()
+    {
+        return $this->hasMany(LibraryUserAccesses::class, 'user_id_owner');
+    }
+
+    public function hasLibraryAccess($profileId)
+    {
+        return $this->accesses->contains('user_id_shared', $profileId);
+    }
+
+    public function sharedToUser()
+    {
+        return $this->belongsTo(User::class, 'user_id_shared');
+    }
 }

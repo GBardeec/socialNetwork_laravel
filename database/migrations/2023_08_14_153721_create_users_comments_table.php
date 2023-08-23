@@ -19,13 +19,11 @@ return new class extends Migration
 
             $table->timestamps();
 
-            //IDX
             $table->index('user_id', 'user_comment_user_id_idx');
             $table->index('comment_id', 'user_comment_comment_id_idx');
 
-            // FK
             $table->foreign('user_id', 'user_comment_user_id_fk')->on('users')->references('id');
-            $table->foreign('comment_id', 'user_comment_comment_id_fk')->on('comments')->references('id');
+            $table->foreign('comment_id', 'user_comment_user_id_fk')->on('comments')->references('id');
         });
     }
 

@@ -16,16 +16,17 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($users as $user)
-                <tr>
-                    <th scope="row">{{ $user->id }}</th>
-                    <td>{{ $user->login }}</td>
-                    <td>
-                        <a class="btn btn-secondary" href="{{ route('profile.show', $user->profile->id) }}">Посмотреть
-                            профиль</a>
-                    </td>
-                </tr>
-            @endforeach
+                @foreach($users as $user)
+                    <tr>
+                        <th scope="row">{{ $user->id }}</th>
+                        <td>{{ $user->login }}</td>
+                        <td>
+                            <a class="btn btn-secondary" href="{{ route('profile.show', $user->profile->id) }}">
+                                Посмотреть профиль
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

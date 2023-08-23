@@ -19,7 +19,6 @@ class CommentReplyController extends Controller
         $user = Auth::user();
         $user->comments()->save($reply);
 
-
         $parentProfile = $parentComment->profiles()->first();
 
         if ($parentProfile) {
